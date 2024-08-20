@@ -1,0 +1,79 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+
+const people = [
+	{
+		name: "Kaki87",
+		description: "Kaki helped me with my first programs, and answered all my tech questions for years.",
+		avatarUrl: "kaki87.png",
+		link: "https://kaki87.net"
+	},
+	{
+		name: "Loggerz",
+		description: "Loggerz spent hours teach me how to use K8S and how to manage an infrastructure.",
+		avatarUrl: "loggerz.png",
+		link: "https://loggerz.net"
+	},
+	{
+		name: "Picnixz",
+		description: "Picnixz taught me how to use OpenSUSE and understand better how Linux works.",
+		avatarUrl: "picnixz.png",
+		link: "https://github.com/picnixz"
+	},
+	{
+		name: "AllElectric2030",
+		subname: "(✝ 2024)",
+		description: "AllElectric2030 was an amazing friend and mentor, knowledgeable in so many fields. Rest in peace.",
+		avatarUrl: "allelectric2030.png"
+	},
+	{
+		name: "Johnny",
+		description: "Johnny saved my Linux from my configuration mistakes twice in less than 6 months. Made me discover i3 and how to use a computer properly.",
+		avatarUrl: "jneos.png",
+		link: "https://people.epfl.ch/johnny.kalajdzic"
+	}
+]
+
+---
+
+<Layout title="Blog">
+	<div class="container mx-auto w-full px-4">
+		<Navbar />
+		<div class="flex flex-col gap-2">
+			<div>
+				<h1 class="text-4xl font-bold">Wall of Fame</h1>
+				<p class="text-lg text-stone-600 dark:text-stone-400">
+					These are the people who have spent countless hours sharing their knowledge with me
+				</p>
+				<hr class="my-4 border-stone-200 dark:border-stone-600" />
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				{people.map((person) => (
+					<div class="bg-white dark:bg-stone-800 rounded-lg p-4 shadow-md">
+						<div class="flex items-center gap-4">
+							<div class="rounded-full overflow-hidden">
+								<img
+									src={`/assets/wall/${person.avatarUrl}`}
+									alt={person.name}
+									class="w-full h-full object-cover"
+								/>
+							</div>
+							<div>
+								<div class="flex items-center gap-2">
+									<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
+										{person.name}
+									</a>
+									{person.subname && (
+										<p class="text-stone dark:text-stone-400">{person.subname}</p>
+									)}
+								</div>
+								<p class="text-stone-600 dark:text-stone-400">{person.description}</p>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</Layout>

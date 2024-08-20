@@ -1,3 +1,5 @@
-# Will Nelson
+# Simon Lefort
 
-[wnelson.dev](https://wnelson.dev)
+[simonlefort.fr](https://simonlefort.fr)
+
+Website by [appellation](https://github.com/appellation)

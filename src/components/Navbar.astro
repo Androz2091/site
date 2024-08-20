@@ -2,6 +2,8 @@
 import Link from "./Link";
 
 const segment = Astro.url.pathname.split("/").find(Boolean);
+const words = (segment || "").split("-");
+const title = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 ---
 
 <div
@@ -9,5 +11,5 @@ const segment = Astro.url.pathname.split("/").find(Boolean);
 >
 	<a class="i-bi-folder-fill inline-block" href="/"></a>
 	<div>/</div>
-	<Link href={`/${segment}`}>{segment}</Link>
+	<Link href={`/${segment}`}>{title}</Link>
 </div>
