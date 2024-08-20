@@ -1,11 +1,4 @@
 {
 	"cleanUrls": true,
-	"trailingSlash": false,
-	"redirects": [
-		{
-			"source": "/blog/2022/:path(.*)",
-			"destination": "/blog/2023/:path*",
-			"permanent": true
-		}
-	]
+	"trailingSlash": false
 }
