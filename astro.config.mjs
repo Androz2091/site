@@ -1,5 +1,4 @@
 import solidJs from "@astrojs/solid-js";
-import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from "astro/config";
 import rehypeAddClasses from "rehype-add-classes";
 import {
@@ -72,8 +71,7 @@ export default defineConfig({
 			noExternal: ["solid-dismiss"],
 		},
 	},
-	output: "hybrid",
-	adapter: vercel(),
+	output: "static",
 	prefetch: {
 		prefetchAll: true,
 	},
