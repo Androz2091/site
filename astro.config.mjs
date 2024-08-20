@@ -56,7 +56,7 @@ export default defineConfig({
 			},
 		}),
 	],
-	site: "https://wnelson.dev",
+	site: "https://simonlefort.fr",
 	markdown: {
 		rehypePlugins: [
 			[
