@@ -1,4 +1,5 @@
 ---
+import clsx from "clsx";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -35,6 +36,18 @@ const people = [
 	}
 ]
 
+const nameGradientClasses = clsx([
+	"font-black",
+	"bg-gradient-to-b",
+	"from-violet-600",
+	"to-teal-600",
+	"bg-clip-text",
+	"bg-[length:100%_300%]",
+	"bg-left",
+	"text-transparent",
+	"animate-bg-pulse",
+]);
+
 ---
 
 <Layout title="Blog">
@@ -61,7 +74,7 @@ const people = [
 						<div class="col-span-2 m-4">
 							<div class="flex items-center gap-2">
 								<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
-									{person.name}
+									<span class={nameGradientClasses}>{person.name}</span>
 								</a>
 								{person.subname && (
 									<p class="text-stone dark:text-stone-400">{person.subname}</p>
