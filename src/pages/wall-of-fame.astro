@@ -50,26 +50,24 @@ const people = [
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{people.map((person) => (
-					<div class="bg-white dark:bg-stone-800 rounded-lg p-4 shadow-md">
-						<div class="flex items-center gap-4">
-							<div class="rounded-full overflow-hidden">
-								<img
-									src={`/assets/wall/${person.avatarUrl}`}
-									alt={person.name}
-									class="w-full h-full object-cover"
-								/>
+					<div class="grid md:grid-cols-3 bg-white dark:bg-stone-800 rounded-lg p-4 shadow-md">
+						<div class="rounded-full overflow-hidden">
+							<img
+								src={`/assets/wall/${person.avatarUrl}`}
+								alt={person.name}
+								class="w-full h-full object-cover"
+							/>
+						</div>
+						<div class="col-span-2 m-4">
+							<div class="flex items-center gap-2">
+								<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
+									{person.name}
+								</a>
+								{person.subname && (
+									<p class="text-stone dark:text-stone-400">{person.subname}</p>
+								)}
 							</div>
-							<div>
-								<div class="flex items-center gap-2">
-									<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
-										{person.name}
-									</a>
-									{person.subname && (
-										<p class="text-stone dark:text-stone-400">{person.subname}</p>
-									)}
-								</div>
-								<p class="text-stone-600 dark:text-stone-400">{person.description}</p>
-							</div>
+							<p class="text-stone-600 dark:text-stone-400">{person.description}</p>
 						</div>
 					</div>
 				))}
