@@ -4,7 +4,7 @@ import Pill from "./Pill";
 import DismissibleCard from "../DismissibleCard";
 
 export default function CurrentTime() {
-	const getLocalTime = () => DateTime.local({ zone: "Europe/Paris" });
+	const getLocalTime = () => DateTime.local({ zone: "UTC-7" });
 	const getFormattedTime = () =>
 		getLocalTime().toLocaleString(DateTime.TIME_SIMPLE);
 	const getFormattedDateTime = () =>
