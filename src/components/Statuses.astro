@@ -8,17 +8,22 @@ type RestResponse = {
 	data: Presence;
 };
 
-const res = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`);
-if (!res.ok) {
-	throw new Error(await res.text());
-}
+// fetched at build time: when Lanyard can not be reached (it happens on the CI runners), the
+// page is built without the status row instead of failing the whole build
+const fetchPresence = async (): Promise<Presence | null> => {
+	try {
+		const res = await fetch(`https://api.lanyard.rest/v1/users/${USER_ID}`);
+		if (!res.ok) throw new Error(await res.text());
+		const body: RestResponse = await res.json();
+		if (!body.success) throw new Error("Lanyard broke");
+		return body.data;
+	} catch (error) {
+		console.warn("Could not fetch the Lanyard presence, building without it", error);
+		return null;
+	}
+};
 
-const body: RestResponse = await res.json();
-if (!body.success) {
-	throw new Error("Lanyard broke");
-}
-
-const initialPresence = body.data;
+const initialPresence = await fetchPresence();
 ---
 
-<StatusRow initialPresence={initialPresence} client:load />
+{initialPresence && <StatusRow initialPresence={initialPresence} client:load />}
