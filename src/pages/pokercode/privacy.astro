@@ -1,0 +1,89 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const updated = "November 11, 2026";
+const contact = "contact@androz2091.fr";
+---
+
+<Layout title="Pokercode bots: Privacy Policy">
+	<div class="container mx-auto w-full px-4">
+		<Navbar />
+		<article class="max-w-3xl pb-16 space-y-4 leading-relaxed [&_h1]:text-4xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:pt-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_a]:underline [&_code]:font-mono">
+			<h1>Privacy Policy: Pokercode Discord bots</h1>
+			<p><em>Last updated: {updated}</em></p>
+
+			<p>
+				This policy covers the two Discord bots of the Pokercode community server:
+				<strong>Pokercode</strong> (application ID 987333072250871878) and
+				<strong>Pokercode Quiz</strong> (application ID 1014190706253910167).
+				Both bots are built for the Pokercode Discord server and only process data from it.
+				They are developed and operated by Simon Lefort (Androz2091) for Pokercode.
+			</p>
+
+			<h2>Pokercode</h2>
+			<p>The Pokercode bot helps the server staff manage member roles. To do so, it stores:</p>
+			<ul>
+				<li>
+					<strong>Role changes</strong>: when a member gains or loses a role, the member's Discord user ID,
+					the role ID, whether the role was added or removed, and the date.
+					This is used to remove time-limited roles once they expire, to send the scheduled
+					role-based messages, and for the staff role reports.
+				</li>
+				<li>
+					<strong>Daily role counts</strong>: once a day, for each tracked role, the number of members
+					holding it and the list of their Discord user IDs, used for the staff statistics.
+				</li>
+			</ul>
+			<p>
+				The bot does not read, store or log the content of any message.
+				When a staff member uses the <code>/csv-drop</code> command, the uploaded CSV file of user IDs is only
+				processed in memory to give a role to the listed members, and is never stored.
+			</p>
+			<p>
+				<strong>Retention</strong>: role changes and daily role counts are automatically deleted after
+				<strong>30 days</strong>.
+			</p>
+			<p>
+				<strong>Security</strong>: the Discord user and role IDs are encrypted (AES-256-GCM) before they are written
+				to the database, so they are encrypted at rest. The database dumps sent to backup storage are encrypted as well.
+			</p>
+
+			<h2>Pokercode Quiz</h2>
+			<p>
+				The Pokercode Quiz bot posts poker quizzes. When you answer one, it stores your Discord user ID,
+				the quiz you answered, the points you earned and the date. This is used to display the
+				lifetime, monthly, weekly and sprint leaderboards and the <code>/rank</code> and <code>/stats</code> commands.
+				These answers are kept as long as the leaderboard exists, unless you ask for their deletion.
+				The bot does not read, store or log the content of any message.
+			</p>
+
+			<h2>What we do not do</h2>
+			<ul>
+				<li>We do not sell, rent or share your data with third parties.</li>
+				<li>We do not use your data for advertising, profiling, or to train machine learning or AI models.</li>
+				<li>We do not collect any data outside of the Pokercode Discord server.</li>
+			</ul>
+
+			<h2>Where the data is stored</h2>
+			<p>
+				The data is stored in a PostgreSQL database on servers operated by Simon Lefort, with backups on
+				OVHcloud object storage. Only the bots and their maintainer can access it.
+			</p>
+
+			<h2>Your rights</h2>
+			<p>
+				You can ask for a copy of the data stored about you, or for its deletion, at any time by emailing
+				<a href={`mailto:${contact}`}>{contact}</a> with your Discord user ID.
+				Requests are handled within 30 days.
+				Leaving the Pokercode server stops any new data collection about you.
+			</p>
+
+			<h2>Changes</h2>
+			<p>
+				If this policy changes, the date at the top of this page is updated.
+				Questions: <a href={`mailto:${contact}`}>{contact}</a>.
+			</p>
+		</article>
+	</div>
+</Layout>
