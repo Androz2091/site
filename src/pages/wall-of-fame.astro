@@ -8,51 +8,93 @@ const people = [
 		name: "Kaki87",
 		description: "Kaki helped me with my first programs, and answered all my tech questions for years.",
 		avatarUrl: "kaki87.png",
+		criteria: [1, 3, 6],
 		link: "https://kaki87.net"
 	},
 	{
 	    name: "Alex'Presso",
 	    description: "Patiently taught me OOP and Node.js through Discord DMs back when I was 13.",
 		avatarUrl: "alex.jpg",
+		criteria: [2, 3, 6],
 		link: "http://alexpresso.me/"
 	},
 	{
 	    name: "Fabnem",
 	    description: "One of the main reasons I made it through my first year of CS! Always helpful and kind.",
 		avatarUrl: "fabnem.png",
+		criteria: [1, 4, 6],
 		link: "https://fabnem.dev/"
 	},
 	{
 		name: "Loggerz",
-		description: "Loggerz is still teaching me how to use K8S and answer all my infrastructure/cloud questions.",
+		description: "Loggerz helped me create my own Kubernetes cluster and answer all my infrastructure and cloud questions.",
 		avatarUrl: "loggerz.png",
+		criteria: [1, 2, 3, 6],
 		link: "https://loggerz.net"
 	},
 	{
 		name: "Picnixz",
 		description: "Picnixz taught me how to use OpenSUSE and understand better how Linux works.",
 		avatarUrl: "picnixz.png",
+		criteria: [2, 3, 6],
 		link: "https://github.com/picnixz"
 	},
 	{
 		name: "AllElectric2030",
 		subname: "(✝ 2024)",
 		description: "AllElectric2030 was an amazing friend and mentor, knowledgeable in so many fields. Rest in peace.",
-		avatarUrl: "allelectric2030.png"
+		avatarUrl: "allelectric2030.png",
+		criteria: [1, 3, 6]
 	},
 	{
 		name: "Johnny",
 		description: "Johnny saved my Linux from my configuration mistakes twice in less than 2 months. Made me discover i3 and how to use a computer properly.",
 		avatarUrl: "jneos.png",
+		criteria: [2, 4, 6],
 		link: "https://people.epfl.ch/johnny.kalajdzic"
 	},
 	{
-	    name: "Nicolas",
+	    name: "Nettlin",
 	    description: "Pushed me toward a few major life choices that ended up making me happier. Endlessly knowledgeable and deeply passionate about CS.",
 		avatarUrl: "nettlin.jpg",
+		criteria: [1, 5, 6],
 		link: "https://nicolas.ettlin.dev/"
+	},
+	{
+		name: "Vi",
+		description: "Taught me so much about managing teams and has been an incredible mentor, always pushing me to grow in ways that go far beyond work.",
+		criteria: [1, 2, 3, 5]
 	}
 ]
+
+const numerals = ["I", "II", "III", "IV", "V", "VI"];
+
+const criteria = [
+	{
+		title: "Sustained mentorship",
+		description: "Has guided me one-on-one over months or years, not through a single answer or a great tutorial.",
+	},
+	{
+		title: "Lasting contribution",
+		description: "Taught me a skill, a tool or a way of working that I still rely on today.",
+	},
+	{
+		title: "Out of my league",
+		description: "Was miles ahead of me, and still made time for me.",
+	},
+	{
+		title: "Got me through",
+		description: "Was there when I was stuck.",
+	},
+	{
+		title: "Pushed me",
+		description: "Challenged me to aim higher, not just to get by.",
+	},
+	{
+		title: "Disinterested party",
+		description: "Had no personal or professional stake in how I turned out.",
+	},
+];
 
 const nameGradientClasses = clsx([
 	"font-black",
@@ -75,18 +117,41 @@ const nameGradientClasses = clsx([
 			<div>
 				<h1 class="text-4xl font-bold">Wall of Fame</h1>
 				<p class="text-lg text-stone-600 dark:text-stone-400">
-                    These are the talented people who spent countless hours mentoring me and helping me grow in CS. Finding mentors like them is rare, and I'm beyond grateful our paths crossed. Note: this wall is not about friends, though some have become very close ones.
+					The extraordinary individuals of my life: people who spent countless hours mentoring me and helping me grow in CS and in my career. Finding mentors like them is rare, and I'm beyond grateful our paths crossed.
+				</p>
+				<p class="mt-4 text-stone-600 dark:text-stone-400">
+					Inspired by the O-1 visa, making the wall takes at least 3 of these 6 criteria:
+				</p>
+				<ol class="mt-2 space-y-1 text-stone-600 dark:text-stone-400">
+					{criteria.map((criterion, i) => (
+						<li class="flex items-baseline gap-3">
+							<span class="w-6 flex-shrink-0 font-mono text-sm text-stone-400 dark:text-stone-500">{numerals[i]}</span>
+							<p><span class="text-stone-800 dark:text-stone-200">{criterion.title}.</span> {criterion.description}</p>
+						</li>
+					))}
+				</ol>
+				<p class="mt-2 text-sm text-stone-500">
+					Friendship, however close, is not a qualifying criterion. Some of these people became very close friends anyway.
 				</p>
 				<hr class="my-4 border-stone-200 dark:border-stone-600" />
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{people.map((person) => (
 					<div class="flex items-center gap-4 bg-white dark:bg-stone-800 rounded-lg p-4 shadow-md">
-						<img
-							src={`/assets/wall/${person.avatarUrl}`}
-							alt={person.name}
-							class="h-20 w-20 flex-shrink-0 rounded-full object-cover"
-						/>
+						{person.avatarUrl ? (
+							<img
+								src={`/assets/wall/${person.avatarUrl}`}
+								alt={person.name}
+								class="h-20 w-20 flex-shrink-0 rounded-full object-cover"
+							/>
+						) : (
+							<div
+								class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-stone-200 dark:bg-stone-700 text-3xl font-bold text-stone-500 dark:text-stone-400"
+								aria-hidden="true"
+							>
+								{person.name[0]}
+							</div>
+						)}
 						<div class="flex flex-col gap-1">
 							<div class="flex items-center gap-2">
 								<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
@@ -97,6 +162,14 @@ const nameGradientClasses = clsx([
 								)}
 							</div>
 							<p class="text-stone-600 dark:text-stone-400">{person.description}</p>
+							{person.criteria && (
+								<p
+									class="font-mono text-xs text-stone-400 dark:text-stone-500"
+									title={person.criteria.map((n) => criteria[n - 1].title).join(", ")}
+								>
+									{person.criteria.map((n) => numerals[n - 1]).join(" · ")}
+								</p>
+							)}
 						</div>
 					</div>
 				))}
