@@ -1,5 +1,4 @@
 ---
-import clsx from "clsx";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -96,18 +95,6 @@ const criteria = [
 	},
 ];
 
-const nameGradientClasses = clsx([
-	"font-black",
-	"bg-gradient-to-b",
-	"from-violet-600",
-	"to-teal-600",
-	"bg-clip-text",
-	"bg-[length:100%_300%]",
-	"bg-left",
-	"text-transparent",
-	"animate-bg-pulse",
-]);
-
 ---
 
 <Layout title="Wall of Fame">
@@ -115,7 +102,7 @@ const nameGradientClasses = clsx([
 		<Navbar />
 		<div class="flex flex-col gap-2">
 			<div>
-				<h1 class="text-4xl font-bold">Wall of Fame</h1>
+				<h1 class="mb-2 text-4xl font-bold">Wall of Fame</h1>
 				<p class="text-lg text-stone-600 dark:text-stone-400">
 					The extraordinary individuals of my life: people who spent countless hours mentoring me and helping me grow in CS and in my career. Finding mentors like them is rare, and I'm beyond grateful our paths crossed.
 				</p>
@@ -125,7 +112,7 @@ const nameGradientClasses = clsx([
 				<ol class="mt-2 space-y-1 text-stone-600 dark:text-stone-400">
 					{criteria.map((criterion, i) => (
 						<li class="flex items-baseline gap-3">
-							<span class="w-6 flex-shrink-0 font-mono text-sm text-stone-400 dark:text-stone-500">{numerals[i]}</span>
+							<span class="w-7 flex-shrink-0 text-right font-mono text-sm text-stone-400 dark:text-stone-500">{numerals[i]}</span>
 							<p><span class="text-stone-800 dark:text-stone-200">{criterion.title}.</span> {criterion.description}</p>
 						</li>
 					))}
@@ -133,7 +120,7 @@ const nameGradientClasses = clsx([
 				<p class="mt-2 text-sm text-stone-500">
 					Friendship, however close, is not a qualifying criterion. Some of these people became very close friends anyway.
 				</p>
-				<hr class="my-4 border-stone-200 dark:border-stone-600" />
+				<hr class="mt-6 mb-4 border-stone-200 dark:border-stone-600" />
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{people.map((person) => (
@@ -154,8 +141,8 @@ const nameGradientClasses = clsx([
 						)}
 						<div class="flex flex-col gap-1">
 							<div class="flex items-center gap-2">
-								<a href={person.link} class="text-2xl font-bold text-stone-600 dark:text-stone-400 hover:underline">
-									<span class={nameGradientClasses}>{person.name}</span>
+								<a href={person.link} class="text-2xl font-bold hover:underline">
+									{person.name}
 								</a>
 								{person.subname && (
 									<p class="text-stone dark:text-stone-400">{person.subname}</p>
