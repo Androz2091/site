@@ -56,7 +56,7 @@ const people = [
 	    name: "Nettlin",
 	    description: "Pushed me toward a few major life choices that ended up making me happier. Endlessly knowledgeable and deeply passionate about CS.",
 		avatarUrl: "nettlin.jpg",
-		criteria: [1, 5],
+		criteria: [1, 4, 5],
 		link: "https://nicolas.ettlin.dev/"
 	},
 	{
@@ -103,7 +103,7 @@ const criteria = [
 					The extraordinary individuals of my life: people who spent countless hours mentoring me and helping me grow in CS and in my career. Finding mentors like them is rare, and I'm beyond grateful our paths crossed.
 				</p>
 				<p class="mt-4 text-stone-600 dark:text-stone-400">
-					Admission works like the O-1 visa. <span class="text-stone-800 dark:text-stone-200">Mentors, not peers:</span> everyone here guided me from a few steps ahead, though nothing obliged them to. No family tie, no job, no money. They also meet at least 2 of these 5 criteria:
+					To keep this from being a list of favorites, I borrowed the two-step process of the US O-1 visa (the one for people with extraordinary ability). <span class="text-stone-800 dark:text-stone-200">First, the criteria:</span> each person meets at least 2 of these 5.
 				</p>
 				<ol class="mt-2 space-y-1 text-stone-600 dark:text-stone-400">
 					{criteria.map((criterion, i) => (
@@ -113,6 +113,9 @@ const criteria = [
 						</li>
 					))}
 				</ol>
+				<p class="mt-4 text-stone-600 dark:text-stone-400">
+					<span class="text-stone-800 dark:text-stone-200">Then, the big picture:</span> were they truly a mentor? That means someone who guided me from a few steps ahead, not a peer, with nothing obliging them to. No family tie, no work relationship, no money involved, at least not when they started mentoring me.
+				</p>
 				<p class="mt-2 text-sm text-stone-500">
 					Friendship, however close, is not a qualifying criterion. Some of these people became very close friends anyway.
 				</p>
